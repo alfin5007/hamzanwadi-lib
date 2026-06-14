@@ -32,6 +32,7 @@ new class extends Component
 ?>
 
 <div>
+    {{-- modal edit category --}}
     <flux:modal 
         name="edit-category" 
         class="md:w-150" 
@@ -78,6 +79,34 @@ new class extends Component
                     <flux:button variant="outline" color="neutral">Cancel</flux:button>
                 </flux:modal.close>
                 <flux:button variant="primary" color="primary" type="submit">Update</flux:button>
+            </div>
+                
+
+        </form>
+    </flux:modal>
+
+    <flux:modal 
+        name="delete-category" 
+        class="md:w-150" 
+        x-on:close="$wire.resetForm()" 
+    >
+        <form class="space-y-8" wire:submit.prevent="deleteCategory">
+            {{-- header --}}
+            <div class="space-y-2">
+                <flux:heading size="lg" class="text-zinc-900 dark:text-white">
+                    Delete Category
+                </flux:heading>
+                <flux:text class="text-zinc-500 dark:text-zinc-400">
+                    this action cannot be undone
+                </flux:text>
+            </div>
+
+            {{-- footer --}}
+            <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                <flux:modal.close>
+                    <flux:button variant="outline" color="neutral">Cancel</flux:button>
+                </flux:modal.close>
+                <flux:button variant="primary" color="danger" type="submit">Delete</flux:button>
             </div>
                 
 
