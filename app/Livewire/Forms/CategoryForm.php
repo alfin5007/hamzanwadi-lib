@@ -45,7 +45,7 @@ class CategoryForm extends Form
         $this->description = $category->description ?? '';
     }
 
-        // update
+    // update
     public function update()
     {
         $this->validate();

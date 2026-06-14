@@ -28,6 +28,21 @@ new class extends Component
         $this->resetValidation();
         $this->form->reset();
     }
+
+    #[On('confirm-delete')]
+    public function confirmDelete($id)
+    {
+        $category = Category::find($id);
+        $this->form->setCategory($category);
+        Flux::modal('delete-category')->show();
+    }
+
+    public function deleteCategory() {
+        $this->form->category->delete();
+        Flux::modal('delete-category')->close();
+        session()->flash('success', 'Category deleted successfully');
+        $this->redirectRoute('categories', navigate: true)  ;
+    }
 };
 ?>
 
